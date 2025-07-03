@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from 'react';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 
 const Model = () => {
   const gltf = useGLTF("src/components/anime.glb");
   const ref = useRef();
-
   return (
     <primitive
       ref={ref}
@@ -18,127 +17,303 @@ const Model = () => {
 };
 
 const About = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <section id="about" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="section-title text-center">ABOUT_ME</h2>
-
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Text Section */}
-          <div className="space-y-6">
-            <p className="text-lg text-white/90 leading-relaxed">
+    <section id="about" style={{ padding: "80px 24px" }}>
+      <div style={{ maxWidth: "1152px", margin: "0 auto" }}>
+        <h2
+  style={{
+    fontFamily: "'Orbitron', 'Share Tech Mono', monospace",
+    fontSize: "2.5rem",
+    fontWeight: "bold",
+    marginBottom: "48px",
+    background: "linear-gradient(to right, #9F00FF, #00FFFF)",
+    backgroundClip: "text",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    color: "#fff", // fallback
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    lineHeight: "1.2",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    textAlign: "center",
+  }}
+>
+  ABOUT_ME
+</h2>
+        
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "48px",
+            alignItems: "start",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <p
+              style={{
+                fontSize: "1.125rem",
+                color: "rgba(255, 255, 255, 0.9)",
+                lineHeight: "1.6",
+              }}
+            >
               Dynamic professional skilled in{" "}
-              <span className="text-neon-purple font-bold">AI</span>,
-              <span className="text-neon-pink font-bold"> Machine Learning</span>,
-              <span className="text-cyber-blue font-bold"> GenAI</span>,
-              <span className="text-neon-pink font-bold"> Data Science</span>, and
-              <span className="text-neon-purple font-bold"> UI/UX Design</span>.
+              <span
+                style={{
+                  color: "#bf00ff",
+                  fontWeight: "bold",
+                }}
+              >
+                AI
+              </span>
+              ,{" "}
+              <span
+                style={{
+                  color: "#ff00ff",
+                  fontWeight: "bold",
+                }}
+              >
+                Machine Learning
+              </span>
+              ,{" "}
+              <span
+                style={{
+                  color: "#00ffff",
+                  fontWeight: "bold",
+                }}
+              >
+                GenAI
+              </span>
+              ,{" "}
+              <span
+                style={{
+                  color: "#ff00ff",
+                  fontWeight: "bold",
+                }}
+              >
+                Data Science
+              </span>
+              , and{" "}
+              <span
+                style={{
+                  color: "#bf00ff",
+                  fontWeight: "bold",
+                }}
+              >
+                UI/UX Design
+              </span>
+              .
             </p>
-
-            <p className="text-lg text-white/90 leading-relaxed">
+            
+            <p
+              style={{
+                fontSize: "1.125rem",
+                color: "rgba(255, 255, 255, 0.9)",
+                lineHeight: "1.6",
+              }}
+            >
               Adept at building{" "}
-              <span className="text-neon-pink font-bold">MERN stack</span>{" "}
+              <span
+                style={{
+                  color: "#ff00ff",
+                  fontWeight: "bold",
+                }}
+              >
+                MERN stack
+              </span>{" "}
               applications, AI/ML solutions, and data-driven tools. Seeking
               opportunities in AI, web development, and data science to
               contribute to innovative projects.
             </p>
 
-            {/* Stats Grid */}
-            <div className="pt-6">
-              <div className="stats-grid animate-float">
-                <div className="stat-box">
-                  <div className="stat-number text-neon-purple">300+</div>
-                  <div className="stat-label">Tools Analyzed</div>
+            <div
+              style={{
+                padding: "32px",
+                background: "transparent",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "16px",
+                backdropFilter: "blur(8px)",
+                textAlign: "center",
+                animation: "float 3s ease-in-out infinite",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(0, 255, 255, 0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+              }}
+            >
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gap: "16px",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      fontFamily: "'Orbitron', sans-serif",
+                      fontSize: "2rem",
+                      fontWeight: "bold",
+                      color: "#bf00ff",
+                    }}
+                  >
+                    300+
+                  </div>
+                  <div
+                    style={{
+                      color: "rgba(255, 255, 255, 0.7)",
+                      fontSize: "0.875rem",
+                      marginTop: "0.25rem",
+                    }}
+                  >
+                    Tools Analyzed
+                  </div>
                 </div>
-                <div className="stat-box">
-                  <div className="stat-number text-cyber-blue">95%</div>
-                  <div className="stat-label">AI Accuracy</div>
+                <div>
+                  <div
+                    style={{
+                      fontFamily: "'Orbitron', sans-serif",
+                      fontSize: "2rem",
+                      fontWeight: "bold",
+                      color: "#00ffff",
+                    }}
+                  >
+                    95%
+                  </div>
+                  <div
+                    style={{
+                      color: "rgba(255, 255, 255, 0.7)",
+                      fontSize: "0.875rem",
+                      marginTop: "0.25rem",
+                    }}
+                  >
+                    AI Accuracy
+                  </div>
                 </div>
-                <div className="stat-box">
-                  <div className="stat-number text-neon-pink">40%</div>
-                  <div className="stat-label">Efficiency Boost</div>
+                <div>
+                  <div
+                    style={{
+                      fontFamily: "'Orbitron', sans-serif",
+                      fontSize: "2rem",
+                      fontWeight: "bold",
+                      color: "#ff00ff",
+                    }}
+                  >
+                    40%
+                  </div>
+                  <div
+                    style={{
+                      color: "rgba(255, 255, 255, 0.7)",
+                      fontSize: "0.875rem",
+                      marginTop: "0.25rem",
+                    }}
+                  >
+                    Efficiency Boost
+                  </div>
                 </div>
-                <div className="stat-box">
-                  <div className="stat-number text-neon-purple">10+</div>
-                  <div className="stat-label">Projects Built</div>
+                <div>
+                  <div
+                    style={{
+                      fontFamily: "'Orbitron', sans-serif",
+                      fontSize: "2rem",
+                      fontWeight: "bold",
+                      color: "#bf00ff",
+                    }}
+                  >
+                    10+
+                  </div>
+                  <div
+                    style={{
+                      color: "rgba(255, 255, 255, 0.7)",
+                      fontSize: "0.875rem",
+                      marginTop: "0.25rem",
+                    }}
+                  >
+                    Projects Built
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 3D Model Section */}
-          <div className="relative">
-            <div className="p-8 text-center h-[500px] flex flex-col items-center justify-center">
-              <Canvas style={{ height: "400px", width: "100%" }}>
-                <ambientLight intensity={1.0} />
-                <pointLight position={[10, 10, 10]} intensity={1.0} />
-                <pointLight position={[-10, -10, -10]} intensity={0.8} />
-                <Model />
-                <OrbitControls enableZoom={true} />
-              </Canvas>
-              <p className="text-sm text-white/70 mt-4">
-                Use your mouse to rotate, zoom, and explore the model
-              </p>
+          <div style={{ position: "relative" }}>
+            <div
+              style={{
+                background: "transparent",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "16px",
+                padding: "32px",
+                textAlign: "center",
+                height: "450px",
+                width: "475px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backdropFilter: "blur(8px)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(0, 255, 255, 0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+              }}
+            >
+              <div style={{ width: "100%", height: "400px" }}>
+                <Canvas style={{ height: "400px", width: "400px" }}>
+                  <ambientLight intensity={1.0} />
+                  <pointLight position={[10, 10, 10]} intensity={1.0} />
+                  <pointLight position={[-10, -10, -10]} intensity={0.8} />
+                  <Model />
+                  <OrbitControls enableZoom={true} />
+                </Canvas>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: "rgba(255, 255, 255, 0.7)",
+                    marginTop: "36px",
+                  }}
+                >
+                  Use your mouse to rotate, zoom, and explore the model
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Custom Styling */}
       <style>
         {`
-          .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            backdrop-filter: blur(8px);
-          }
-
-          .stat-box {
-            text-align: center;
-          }
-
-          .stat-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            font-weight: bold;
-          }
-
-          .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-          }
-
-          .animate-float {
-            animation: float 3s ease-in-out infinite;
-          }
-
           @keyframes float {
-            0%, 100% { transform: translateY(0); }
+            0% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+          }
+
+          @keyframes glow {
+            from { box-shadow: 0 0 5px #bf00ff, 0 0 10px #00ffff; }
+            to { box-shadow: 0 0 10px #bf00ff, 0 0 20px #00ffff; }
           }
 
           .text-neon-purple { color: #bf00ff; }
           .text-neon-pink { color: #ff00ff; }
           .text-cyber-blue { color: #00ffff; }
-          .font-orbitron { font-family: 'Orbitron', sans-serif; }
 
           .section-title {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #00ffff;
-            text-transform: uppercase;
+            background: linear-gradient(to right, #9F00FF, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
             letter-spacing: 2px;
-          }
-
-          body {
-            background: #0a0a1a;
-            color: #fff;
+            text-transform: uppercase;
           }
         `}
       </style>

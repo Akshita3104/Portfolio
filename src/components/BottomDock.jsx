@@ -25,90 +25,72 @@ const BottomDock = () => {
   ];
 
   return (
-    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="flex items-center space-x-2">
+    <div
+      style={{
+        position: 'fixed',
+        top: '90%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 50,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         {dockItems.map((item) => (
-          <div key={item.id} className="relative">
+          <div key={item.id} style={{ position: 'relative' }}>
             {hoveredItem === item.id && (
-              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 text-cyan-300 text-sm font-medium whitespace-nowrap">
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-3rem',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: '#00ffff',
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 {item.label}
               </div>
             )}
             <button
               onClick={() => scrollToSection(item.id)}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
-              className={`w-12 h-12 rounded-xl bg-white/10 hover:bg-red-500/20 hover:border-pink-500 transition-all duration-300 group cursor-pointer flex items-center justify-center ${
-                hoveredItem === item.id ? 'transform -translate-y-3 scale-110' : ''
-              }`}
+              onMouseEnter={(e) => {
+                setHoveredItem(item.id);
+                e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+                e.currentTarget.querySelector('svg').style.color = '#00ffff';
+              }}
+              onMouseLeave={(e) => {
+                setHoveredItem(null);
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.querySelector('svg').style.color = '#fff';
+              }}
+              style={{
+                width: '3rem',
+                height: '3rem',
+                borderRadius: '0.75rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transform:
+                  hoveredItem === item.id ? 'translateY(-0.75rem) scale(1.1)' : 'none',
+              }}
             >
-              <item.icon className="w-5 h-5 text-white group-hover:text-cyan-300" />
+              <item.icon style={{ width: '1.25rem', height: '1.25rem', color: '#fff' }} />
             </button>
           </div>
         ))}
       </div>
       <style>
         {`
-          .fixed {
-            position: fixed;
+          @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
           }
-          .bottom-6 {
-            bottom: 1.5rem;
-          }
-          .left-1/2 {
-            left: 50%;
-          }
-          .transform {
-            transform: translate(-50%, 0);
-          }
-          .z-50 {
-            z-index: 50;
-          }
-          .flex {
-            display: flex;
-          }
-          .items-center {
-            align-items: center;
-          }
-          .space-x-2 > :not([hidden]) ~ :not([hidden]) {
-            margin-left: 0.5rem;
-          }
-          .w-12 {
-            width: 3rem;
-          }
-          .h-12 {
-            height: 3rem;
-          }
-          .rounded-xl {
-            border-radius: 0.75rem;
-          }
-          .transition-all {
-            transition-property: all;
-            transition-duration: 300ms;
-          }
-          .duration-300 {
-            transition-duration: 300ms;
-          }
-          .transform {
-            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-          }
-          .-translate-y-3 {
-            --tw-translate-y: -0.75rem;
-          }
-          .scale-110 {
-            --tw-scale-x: 1.1;
-            --tw-scale-y: 1.1;
-          }
-          .cursor-pointer {
-            cursor: pointer;
-          }
-          .items-center {
-            align-items: center;
-          }
-          .justify-center {
-            justify-content: center;
-          }
-
         `}
       </style>
     </div>

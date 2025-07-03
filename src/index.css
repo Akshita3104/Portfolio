@@ -1,10 +1,8 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Cyberpunk Galaxy Design System */
-
 @layer base {
   :root {
     --background: 10 10% 3%;
@@ -58,65 +56,6 @@
     background: linear-gradient(135deg, #0A0A0F 0%, #1a0a2e 50%, #16213e 100%);
     min-height: 100vh;
     overflow-x: hidden;
-  }
-
-  /* Enhanced Galaxy Background with Moving Stars */
-  .galaxy-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(159, 0, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(255, 0, 200, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-      linear-gradient(135deg, #0A0A0F 0%, #1a0a2e 30%, #16213e 60%, #0f051a 100%);
-    animation: galaxy-drift 100s linear infinite;
-  }
-
-  .galaxy-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(ellipse at center, transparent 20%, rgba(10, 10, 15, 0.7) 70%),
-      linear-gradient(135deg, rgba(159, 0, 255, 0.05) 0%, rgba(0, 212, 255, 0.05) 100%);
-  }
-
-  /* Moving Stars */
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 50%;
-    animation: twinkle 3s ease-in-out infinite alternate, float-vertical 8s ease-in-out infinite;
-  }
-
-  .star:nth-child(2n) {
-    background: rgba(159, 0, 255, 0.8);
-    animation-delay: 1s;
-  }
-
-  .star:nth-child(3n) {
-    background: rgba(255, 0, 200, 0.8);
-    animation-delay: 2s;
-  }
-
-  .star:nth-child(4n) {
-    width: 1px;
-    height: 1px;
-    background: rgba(0, 212, 255, 0.6);
-  }
-
-  .star:nth-child(5n) {
-    background: rgba(0, 212, 255, 0.8);
-    animation-delay: 3s;
   }
 
   /* Glassmorphism */
@@ -188,24 +127,9 @@
   }
 }
 
-/* Additional Animations */
-@keyframes galaxy-drift {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes twinkle {
-  0% { opacity: 0.3; }
-  100% { opacity: 1; }
-}
-
-@keyframes float-vertical {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
+/* Animations */
 @keyframes sparkle {
-  0% { 
+  0% {
     transform: scale(0) rotate(0deg);
     opacity: 1;
   }
@@ -213,17 +137,17 @@
     transform: scale(1) rotate(180deg);
     opacity: 0.8;
   }
-  100% { 
+  100% {
     transform: scale(0) rotate(360deg);
     opacity: 0;
   }
 }
 
 @keyframes cursor-glow {
-  0%, 100% { 
+  0%, 100% {
     box-shadow: 0 0 10px rgba(159, 0, 255, 0.5);
   }
-  50% { 
+  50% {
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
   }
 }
